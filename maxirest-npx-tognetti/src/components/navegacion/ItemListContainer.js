@@ -1,29 +1,25 @@
 import React from 'react'
+import ItemCount from './ItemCount'
 
-import PropGreeting from './PropGreeting'
 
-const ItemListContainer =({ greeting }) => {
-  return(
-    <div>{greeting}</div>
-  )
+const ItemListContainer = ({ greeting }) => {
+
+    
+
+    const onAdd = (count) =>{
+      alert('Pedido de zzzz por: ' + count + ' kg')
+    }
+
+    return(
+      
+  
+      <div style= {{ textAlign:'center', marginTop: 50}}>
+        {greeting} <br></br>
+        <ItemCount initial={1} stock={10} onAdd={onAdd} />
+      </div>
+    )
+
 }
 
-
-
-
-// const ItemListContainer = () => {
-
-//     const saludo =()=> {
-//         alert('Bienvenido')
-//     }
-
-//   return (
-
-//     <div>
-//         <PropGreeting/>
-//       ItemListContainer
-//     </div>
-//   )
-// }
 
 export default ItemListContainer
