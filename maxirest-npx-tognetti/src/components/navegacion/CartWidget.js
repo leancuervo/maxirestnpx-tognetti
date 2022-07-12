@@ -2,7 +2,7 @@ import React from 'react'
 
 const CartWidget = () => {
   return (
-    <div className="conteiner-fluid d-block mx-auto">
+    <div className="cartWidget conteiner-fluid d-block float-end">
         <img src='./carta.png' width='30' alt='logo maxirest'/>
     </div>
   )

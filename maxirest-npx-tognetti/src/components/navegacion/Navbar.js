@@ -7,7 +7,7 @@ const Navbar = () => {
     return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
     <div className="container-fluid">
-    <div className="image-fluid d-block text-center">
+    <div className="">
         <CartWidget/>
         </div>
     <Link to='/'> 

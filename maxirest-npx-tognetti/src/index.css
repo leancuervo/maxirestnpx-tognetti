@@ -11,3 +11,14 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.propGreeting {
+
+  background-color: yellow;
+}
+
+.cartWidget{
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
