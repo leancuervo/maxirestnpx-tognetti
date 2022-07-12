@@ -2,19 +2,28 @@ import React from 'react'
 
 import PropGreeting from './PropGreeting'
 
-const ItemListContainer = () => {
-
-    const saludo =()=> {
-        alert('Bienvenido')
-    }
-
-  return (
-
-    <div>
-        <PropGreeting/>
-      ItemListContainer
-    </div>
+const ItemListContainer =({ greeting }) => {
+  return(
+    <div>{greeting}</div>
   )
 }
+
+
+
+
+// const ItemListContainer = () => {
+
+//     const saludo =()=> {
+//         alert('Bienvenido')
+//     }
+
+//   return (
+
+//     <div>
+//         <PropGreeting/>
+//       ItemListContainer
+//     </div>
+//   )
+// }
 
 export default ItemListContainer

@@ -14,7 +14,7 @@ function App() {
     <div className="App">
       <Router>
         <Navbar/>
-        <ItemListContainer/>
+        <ItemListContainer greeting='Bienvenido a Maxirest'/>
       </Router>
     </div>
   );
