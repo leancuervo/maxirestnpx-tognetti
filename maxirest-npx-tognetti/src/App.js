@@ -4,6 +4,7 @@ import Navbar from './components/navegacion/Navbar'
 import Inicio from './components/paginas/Inicio'
 import ComponenteClase from './ComponenteClase';
 import ItemListContainer from './components/navegacion/ItemListContainer';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
