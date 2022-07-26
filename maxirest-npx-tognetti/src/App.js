@@ -1,6 +1,6 @@
 import './App.css';
-import {  BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
-import Navbar from './components/navegacion/Navbar'
+import {  BrowserRouter, Routes, Router, Navigate } from 'react-router-dom'
+import Navbar from './components/NavBar/Navbar'
 import Inicio from './components/paginas/Inicio'
 import ComponenteClase from './ComponenteClase';
 import ItemListContainer from './components/navegacion/ItemListContainer';
@@ -15,21 +15,15 @@ import { Suspense } from 'react';
 
 function App() {
   return (
-    <BrowserRouter>
-        <div className="App">
-          
-            <Navbar/>
-            <Routes>
-              <Route path='/' element={<ItemListContainer greeting='Bienvenido a Maxirest'/>}/>
-              <Route path='/detalle' element={<ItemDetailContainer/>}/>
-              <Route path='/cart' element={<CartContainer/>}/> 
-              <Route path='*' element={<Navigate to='/'/>}/>
 
-              
-            </Routes>
-          
+        <div className="App">
+          <Router>
+            <Navbar/>
+            <ItemListContainer/>
+            <ItemDetailContainer/>
+            </Router>
         </div>
-    </BrowserRouter>
+    
     
   );
 }

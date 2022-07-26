@@ -1,21 +1,24 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
+import ItemDetail from '../ItemDetail/ItemDetail'
 
-const ItemDetailContainer = () => {
+const producto = {id: 1, name: "trufa", price:150, stock: 5, image: 'https://definicion.de/wp-content/uploads/2012/11/trufa-1.jpg' }
 
-    const [result, setResult] = useState ({ results :[]})
+export const ItemDetailContainer = () => {
 
-    
-    useEffect(() => {
-        fetch('')
-        .then (resp => resp.json())
-        .catch(json => setResult(json)) 
-      
+    const [data, setData] = useState({});
+
+    useEffect(() =>{
+      const getData = new Promise ( resolve =>{
+        setTimeout(() => {
+          resolve(producto);
+        }, 3000);
+      });
+      getData.then(res => setData(res))
     }, [])
     
-
-
+    
   return (
-    <div>{result.results.slice(0,10).map(item => <div>{item.title}</div>)}</div>
+    <ItemDetail data={data}/>
   )
 }
 
