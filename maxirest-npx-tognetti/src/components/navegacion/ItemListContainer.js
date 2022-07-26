@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react'
 import {Link, useParams} from 'react-router-dom'
 import Item from './Item'
 import ItemList from './ItemList'
-import {getFetch} from "../../"
-import Productos from '../paginas/Productos'
+
+import Productos from '../helpers/Productos'
 // import ItemCount from './ItemCount'
 
 

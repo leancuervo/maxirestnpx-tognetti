@@ -1,5 +1,5 @@
 import './App.css';
-import {BrowserRouter as  Router, Switch, Route, BrowserRouter, Routes} from 'react-router-dom'
+import {  BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import Navbar from './components/navegacion/Navbar'
 import Inicio from './components/paginas/Inicio'
 import ComponenteClase from './ComponenteClase';
@@ -15,14 +15,21 @@ import { Suspense } from 'react';
 
 function App() {
   return (
-    
+    <BrowserRouter>
         <div className="App">
-          <Router>
+          
             <Navbar/>
-            <ItemListContainer greeting='Bienvenido a Maxirest'/>
-            <ItemDetailContainer/>
-          </Router>
+            <Routes>
+              <Route path='/' element={<ItemListContainer greeting='Bienvenido a Maxirest'/>}/>
+              <Route path='/detalle' element={<ItemDetailContainer/>}/>
+              <Route path='/cart' element={<CartContainer/>}/> 
+              <Route path='*' element={<Navigate to='/'/>}/>
+
+              
+            </Routes>
+          
         </div>
+    </BrowserRouter>
     
   );
 }

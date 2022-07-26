@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-import Productos from '../paginas/Productos'
+import Productos from '../helpers/Productos'
 import Item from './Item'
 
 

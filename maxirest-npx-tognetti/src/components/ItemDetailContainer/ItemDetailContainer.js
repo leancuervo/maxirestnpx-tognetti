@@ -6,7 +6,7 @@ const ItemDetailContainer = () => {
 
     
     useEffect(() => {
-        fetch('html://pokeapi.co/api/v2/pokemon/?offset=20&limit=10')
+        fetch('')
         .then (resp => resp.json())
         .catch(json => setResult(json)) 
       
