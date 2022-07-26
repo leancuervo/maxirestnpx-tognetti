@@ -3,7 +3,7 @@ import {Link, useParams} from 'react-router-dom'
 import Item from './Item'
 import ItemList from './ItemList'
 import {getFetch} from "../../"
-import Productos from './Productos'
+import Productos from '../paginas/Productos'
 // import ItemCount from './ItemCount'
 
 
@@ -16,37 +16,19 @@ const ItemListContainer = ({ greeting }) => {
         if (categoriaId){
           getFetch()
           .then(resp => setProductos(resp.filter (productos => productos.categoria === categoriaId)))
+          .catch(err => console.log(err))
 
         }else {
           getFetch()
           .then(resp=> setProductos(resp))
+          .catch(err => console.log(err))
         }}, [categoriaId])
 
         console.table(categoriaId)
         
         
         return(
-          <div style= { { display:'flex', flexDirection: 'row', flexWarp: 'warp'}}>
-              {productos?.map( prod => 
-              
-                      <div key = {prod.id} className='col-md-4 p-1'> 
-
-                          <div className='card w-100 mt-5'> 
-                          
-                            <div className= "card-header">
-                            {`${prod.name} - ${prod.stock}`}  
-                            </div>
-                            <div className='card-body'>
-                            <center>
-                              <img src={prod.imag} alt={prod.name} className='w-50'></img>  
-                            </center>  
-                            </div>
-                          </div>
-
-                      </div> 
-
-              )}
-            </div>
+              <ItemList productos={productos}/>
             // loading ? 
             //     <h1>Aguarde un momento..</h1>:
             // <ItemList productos ={productos}/>
