@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 
 export const ItemDetail = ({itemsDetail}) => {
 
+    
           const onAdd = (count) => {
             console.log(count)
           }

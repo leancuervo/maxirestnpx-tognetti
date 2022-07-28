@@ -10,6 +10,29 @@ import Productos from '../helpers/Productos'
 
 const ItemListContainer = () => {
 
+
+  const [personajes, setPersonaje] = useState([])
+
+  const getFetch = async()=> {
+
+    try {
+      const resp = await fetch('https://rickandmortyapi.com/api/character/1,2,3,4,5,6,7,8,9')
+      const dataParse = await resp.json()
+      setPersonaje(dataParse)
+      } catch (error) {
+        console.log(error)
+      
+    }
+
+    
+  }
+
+  useEffect(()=>{
+    getFetch()
+  
+},[])
+
+
   const [items, setItems] = useState([])
   const { categoriaId } = useParams()
   // const [loading, setLoading] = useState(true, 2000)

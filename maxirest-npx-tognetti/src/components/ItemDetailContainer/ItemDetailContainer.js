@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import { useParams } from 'react-router-dom'
 import ItemDetail from '../ItemDetail/ItemDetail'
+import {getFetch} from '../helpers/getFetch'
 
 
 export const ItemDetailContainer = () => {
@@ -8,18 +9,20 @@ export const ItemDetailContainer = () => {
 
   const [itemsDetail, setItemsDetail] = useState([])
   const { detalleId } = useParams()
-  // const [loading, setLoading] = useState(true, 2000)
+  const [loading, setLoading] = useState(true)
 
       useEffect(() =>{
         if (detalleId) {
           
-          fetch('https:/rickandmortyapi.com/api/character')
+          getFetch()
           .then(resp => setItemsDetail(resp.filter(item => item.detalle === detalleId))
           .catch(error => console.log(error)))
-          // .finally(() => setLoading(false))
+          .finally(() => setLoading(false))
         }else{
-            fetch('https:/rickandmortyapi.com/api/character')
+          getFetch()
             .then(resp => setItemsDetail(resp))
+            .catch(error => console.log(error))
+            .finally( setLoading(false))
           }
         
       }, [detalleId])
