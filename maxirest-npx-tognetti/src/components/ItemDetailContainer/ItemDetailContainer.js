@@ -4,7 +4,7 @@ import ItemDetail from '../ItemDetail/ItemDetail'
 import {getFetch} from '../helpers/getFetch'
 
 
-export const ItemDetailContainer = () => {
+export const ItemDetailContainer = ({}) => {
 
 
   const [itemsDetail, setItemsDetail] = useState([])
@@ -27,10 +27,22 @@ export const ItemDetailContainer = () => {
         
       }, [detalleId])
     
+      useEffect(()=>{
+        getFetch()
+      
+    },[])
        
 
 console.table(detalleId)
 
+return (
+  
+  <div style = {{textAlign:'center', marginTop: 200 }}>
+    <ItemDetail/>
+    {/* { detalleId.map(prod =><ItemDetail key={prod.id} prod={prod}/>)} */}
+  </div>
+)
+}
 
         
 
@@ -49,12 +61,5 @@ console.table(detalleId)
     // }, [])
     
     
-  return (
-    
-    <div style = {{textAlign:'center', marginTop: 200 }}>
-      <ItemDetail itemsDetail={itemsDetail}/>
-    </div>
-  )
-}
 
 export default ItemDetailContainer

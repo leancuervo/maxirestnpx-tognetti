@@ -27,10 +27,6 @@ const ItemListContainer = () => {
     
   }
 
-  useEffect(()=>{
-    getFetch()
-  
-},[])
 
 
   const [items, setItems] = useState([])
@@ -54,13 +50,14 @@ const ItemListContainer = () => {
        
 
 console.table(categoriaId)
+console.table(personajes)
 
 
         return(
 
           <div style = {{textAlign:'center', marginTop: 200 }}>
               <ItemList items={items}/> 
-          
+              {personajes.map(personaje => <li key={personaje.id}>{personaje.age}</li>)}
               
               
               

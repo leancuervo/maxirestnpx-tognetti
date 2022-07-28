@@ -1,11 +1,11 @@
 import React from 'react';
-
+import { getFetch } from '../helpers/getFetch';
 import ItemCount from '../navegacion/ItemCount';
 import Carousel from 'react-bootstrap/Carousel';
 import { Link } from 'react-router-dom';
 
 
-export const ItemDetail = ({itemsDetail}) => {
+export const ItemDetail = ({itemDetail}) => {
 
     
           const onAdd = (count) => {
@@ -15,7 +15,7 @@ export const ItemDetail = ({itemsDetail}) => {
           return (
 
             <div style= { { display:'flex', flexDirection: 'row', justifyContent: 'center', flexWarp: 'warp'}}>
-              {itemsDetail.map( item => <div key = {item.id} className='col-md-4 p-1'> 
+              {itemDetail.map( item => <div key = {item.id} className='col-md-4 p-1'> 
 
                   <div className='card w-100 mt-5'> 
 
