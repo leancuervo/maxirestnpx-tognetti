@@ -1,6 +1,6 @@
 import './App.css';
-import {  BrowserRouter, Routes, Router, Navigate } from 'react-router-dom'
-import Navbar from './components/NavBar/Navbar'
+import {  BrowserRouter, BrowserRouter as Router, Route } from 'react-router-dom'
+import NavBar from './components/NavBar/NavBar'
 import Inicio from './components/paginas/Inicio'
 import ComponenteClase from './ComponenteClase';
 import ItemListContainer from './components/navegacion/ItemListContainer';
@@ -15,15 +15,12 @@ import { Suspense } from 'react';
 
 function App() {
   return (
-
+    <BrowserRouter>
         <div className="App">
-          <Router>
-            <Navbar/>
-            <ItemListContainer/>
-            <ItemDetailContainer/>
-            </Router>
+          <NavBar />
+          <ItemListContainer />
         </div>
-    
+    </BrowserRouter>
     
   );
 }

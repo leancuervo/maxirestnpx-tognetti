@@ -4,31 +4,108 @@ import Item from './Item'
 import ItemList from './ItemList'
 
 import Productos from '../helpers/Productos'
+import ItemCount from './ItemCount'
 // import ItemCount from './ItemCount'
 
 
 const ItemListContainer = ({ greeting }) => {
 
-        const [productos, setProductos] = useState([])
-        const {categoriaId} = useParams()
+  const [items,setItems] = useState ([])
+  const [loading, setLoading] = useState(true)
+  // const promesa = () => useState ([])
+  const productos = [
+      {id: 1, name: "trufa", price:150, stock: 5, image: 'https://definicion.de/wp-content/uploads/2012/11/trufa-1.jpg' },
+      {id: 2, name: "aceite de oliva", price:20, stock: 10, image: 'https://http2.mlstatic.com/D_NQ_NP_841076-MLA43642883689_102020-V.jpg' },
+      {id: 3, name: "papa", price:10, stock: 2, image: 'https://i0.wp.com/codigoespagueti.com/wp-content/uploads/2019/09/papa.jpg?resize=1080%2C608&quality=80&ssl=1'},
+      {id: 4, name: "asado", price:100, stock: 20, image: 'https://http2.mlstatic.com/D_NQ_NP_841076-MLA43642883689_102020-V.jpg' },
+      {id: 5, name: "harina", price:5, stock: 30, image: 'https://http2.mlstatic.com/D_NQ_NP_841076-MLA43642883689_102020-V.jpg' },
 
-        useEffect(() =>{
-        if (categoriaId){
-          productos()
-          .then(resp => setProductos(resp.filter (productos => productos.categoria === categoriaId)))
-          .catch(err => console.log(err))
+    ]
+    
+    const task = new Promise ((res, rej) => {
+      setTimeout(()=>
+      {
+        res(productos)
+      }, 2000)
+    })
+    
+    useEffect(() => {
+      
+      // task
+      //   .then (res => setItems(res))
+      //   .catch(error => console.log(error))
+      //   .finally(() => setLoading(false))
+        fetch("https:/rickandmortyapi.com/api/character")
+        .then(res=> res.json())
+        .then(res => setItems(res.results))
+        .catch(error => console.log(error))
+        .finally(() => setLoading(false))
+    }, [])
+    
+    
+    const getTask = async () => {
+      try {
+        let res = await task
+        setItems(res)
+      } catch (error) {
+        console.log (error)
+      }
+    }
+    
+    useEffect(() => {
+    
+        getTask()
+    
+    
+    }, [])
+    // const onAdd = (count) =>{
+    //       alert('Pedido de ' + name + ' por: ' + count + ' kg')
+    // }
+    
 
-        }else {
-          productos()
-          .then(resp=> setProductos(resp))
-          .catch(err => console.log(err))
-        }}, [categoriaId])
+    console.log (items)
 
-        console.table(categoriaId)
+        // const [productos, setProductos] = useState([])
+        // const {categoriaId} = useParams()
+
+        // useEffect(() =>{
+        // if (categoriaId){
+        //   productos()
+        //   .then(resp => setProductos(resp.filter (productos => productos.categoria === categoriaId)))
+        //   .catch(err => console.log(err))
+
+        // }else {
+        //   productos()
+        //   .then(resp=> setProductos(resp))
+        //   .catch(err => console.log(err))
+        // }}, [categoriaId])
+
+        // console.table(categoriaId)
+
+//         const [ result, setResult] = useState({ result : [] });
+
+// useEffect(() =>{
+//   fetch('https://pokeapi.co/api/v2/{endpoint}/')
+//   .then(res => res.json())
+//   .then(json => setResult(json));
+// }, []);
+
+      // const onAdd =(count) =>{
+      //   alert(`Seleccionaste: `+ count)
+      // }
+
+
         
         
         return(
-              <ItemList productos={productos}/>
+
+          <div style = {{textAlign:'center', marginTop: 200 }}>
+              {loading ? <h1>Cargando...</h1> : <ItemList items={items}/>}
+              {/* <ItemList items={items}/>             */}
+              
+              
+          </div>
+              // <ItemList productos={productos}/>
             // loading ? 
             //     <h1>Aguarde un momento..</h1>:
             // <ItemList productos ={productos}/>
@@ -90,3 +167,5 @@ const ItemListContainer = ({ greeting }) => {
 
   //   console.log (items)
 export default ItemListContainer
+
+

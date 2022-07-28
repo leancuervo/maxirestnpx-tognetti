@@ -4,12 +4,15 @@ const ItemCount = ({initial, stock, onAdd}) => {
     const [count, setCount] =useState(initial)
 
     const suma = () => {
-      if (count < stock) {
-        setCount(count + 1)
-      } else {
-        alert('¿Pedir mas del stock habitual?')
-      }
+    //   if (count < stock) {
+    //     setCount(count + 1)
+    //   } else {
+    //     alert('¿Pedir mas del stock habitual?')
+      count < stock ? setCount(count + 1) : alert ('Maxima cantidad de productos disponible')
     }
+
+      
+    
 
     
     const resta = () => {
@@ -18,7 +21,7 @@ const ItemCount = ({initial, stock, onAdd}) => {
         setCount(count - 1)
 
       }else {
-        alert('Elegir al menos 1 unidad')
+        alert(`Elegir al menos: ${initial} unidad/es`)
       }
     }
 
@@ -49,6 +52,6 @@ const ItemCount = ({initial, stock, onAdd}) => {
       // </div> */}
       </div>
       )
-}
+    }
 
 export default ItemCount

@@ -43,6 +43,9 @@ export const ItemDetail = ({data}) => {
           //     </Carousel.Caption>
           //   </Carousel.Item>
           // </Carousel>
+          const onAdd = (count) => {
+            console.log(count)
+          }
 
           return (
                 <div className='row'>
@@ -57,9 +60,15 @@ export const ItemDetail = ({data}) => {
                               <p>Stock: {data.stock}</p>
                             </div>
                         </div>
+                        <div className='producto__button'>
+                          <button className='button'> Detalle </button>
+                        </div>
+                        <div>
+                          <a href="#" className='btn'></a>
+                        </div>
                     </div>
                     <div className='col'>
-                      <ItemCount initial={1} stock={5}  />
+                      <ItemCount initial={1} stock={5} onAdd={onAdd} />
                     </div>
                 </div>
   )
