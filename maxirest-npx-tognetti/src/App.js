@@ -1,12 +1,8 @@
 import './App.css';
-import {  BrowserRouter, BrowserRouter as Router, Route } from 'react-router-dom'
+import {  BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import NavBar from './components/NavBar/NavBar'
-import Inicio from './components/paginas/Inicio'
-import ComponenteClase from './ComponenteClase';
 import ItemListContainer from './components/navegacion/ItemListContainer';
-
 import 'bootstrap/dist/css/bootstrap.min.css';
-
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
@@ -18,7 +14,21 @@ function App() {
     <BrowserRouter>
         <div className="App">
           <NavBar />
-          <ItemListContainer />
+          <Routes>
+              <Route index path='/' element={<ItemListContainer/>} />
+              <Route index path='/categoria/:categoriaId' element={<ItemListContainer/>} />
+              <Route path='/detalle/:productoId' element ={
+                <Suspense fallback={<div>Cargando...</div>}>
+                  <ItemListContainer/>
+                </Suspense>
+              } />
+              <Route path='/' element={<ItemDetailContainer/>}/>
+              <Route path='*' element={<Navigate to='/'/>}/>
+              
+
+              {/* <ItemListContainer /> */}
+          </Routes>
+            
         </div>
     </BrowserRouter>
     
@@ -42,3 +52,6 @@ function App() {
 
 
 export default App;
+
+
+

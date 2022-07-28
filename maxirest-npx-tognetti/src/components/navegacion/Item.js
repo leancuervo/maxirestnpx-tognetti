@@ -63,7 +63,7 @@ const Item = ({item}) => {
     // console.log (items)
     return (
         <Card style={{ width: '18rem', margin: 20 }}>
-        <Card.Img variant="top" src= {image} />
+        <Card.Img variant="top" src= {image} style={{ maxHeight:'10rem'}} />
         <Card.Body>
         <Card.Title>{name}</Card.Title>
         <Card.Text>
@@ -71,8 +71,9 @@ const Item = ({item}) => {
             <br />
             Disponible: {stock}
         </Card.Text>
+        <Link to={`/detalles/${item.id}`}>
         <Button variant="primary">Mas Info</Button>
-
+        </Link>
         </Card.Body>
         <ItemCount initial={1} stock={10} onAdd={onAdd}/>
         </Card>

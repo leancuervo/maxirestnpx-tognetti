@@ -4,66 +4,101 @@ import Item from './Item'
 import ItemList from './ItemList'
 
 import Productos from '../helpers/Productos'
-import ItemCount from './ItemCount'
-// import ItemCount from './ItemCount'
 
 
-const ItemListContainer = ({ greeting }) => {
 
-  const [items,setItems] = useState ([])
-  const [loading, setLoading] = useState(true)
-  // const promesa = () => useState ([])
-  const productos = [
-      {id: 1, name: "trufa", price:150, stock: 5, image: 'https://definicion.de/wp-content/uploads/2012/11/trufa-1.jpg' },
-      {id: 2, name: "aceite de oliva", price:20, stock: 10, image: 'https://http2.mlstatic.com/D_NQ_NP_841076-MLA43642883689_102020-V.jpg' },
-      {id: 3, name: "papa", price:10, stock: 2, image: 'https://i0.wp.com/codigoespagueti.com/wp-content/uploads/2019/09/papa.jpg?resize=1080%2C608&quality=80&ssl=1'},
-      {id: 4, name: "asado", price:100, stock: 20, image: 'https://http2.mlstatic.com/D_NQ_NP_841076-MLA43642883689_102020-V.jpg' },
-      {id: 5, name: "harina", price:5, stock: 30, image: 'https://http2.mlstatic.com/D_NQ_NP_841076-MLA43642883689_102020-V.jpg' },
 
-    ]
+const ItemListContainer = () => {
+
+  const [items, setItems] = useState([])
+  const { categoriaId } = useParams()
+  // const [loading, setLoading] = useState(true, 2000)
+
+      useEffect(() =>{
+        if (categoriaId) {
+          
+          fetch('https:/rickandmortyapi.com/api/character')
+          .then(resp => setItems(resp.filter(item => item.categoria === categoriaId))
+          .catch(error => console.log(error)))
+          // .finally(() => setLoading(false))
+        }else{
+            fetch('https:/rickandmortyapi.com/api/character')
+            .then(resp => setItems(resp))
+          }
+        
+      }, [categoriaId])
     
-    const task = new Promise ((res, rej) => {
-      setTimeout(()=>
-      {
-        res(productos)
-      }, 2000)
-    })
+       
+
+console.table(categoriaId)
+
+
+        return(
+
+          <div style = {{textAlign:'center', marginTop: 200 }}>
+              <ItemList items={items}/> 
+          
+              
+              
+              
+          </div>
+  )
+  
+  }       
+  // const [items,setItems] = useState ([])
+  // const [loading, setLoading] = useState(true)
+  // // const promesa = () => useState ([])
+  // const productos = [
+  //     {id: 1, name: "trufa", price:150, stock: 5, image: 'https://definicion.de/wp-content/uploads/2012/11/trufa-1.jpg' },
+  //     {id: 2, name: "aceite de oliva", price:20, stock: 10, image: 'https://http2.mlstatic.com/D_NQ_NP_841076-MLA43642883689_102020-V.jpg' },
+  //     {id: 3, name: "papa", price:10, stock: 2, image: 'https://i0.wp.com/codigoespagueti.com/wp-content/uploads/2019/09/papa.jpg?resize=1080%2C608&quality=80&ssl=1'},
+  //     {id: 4, name: "asado", price:100, stock: 20, image: 'https://http2.mlstatic.com/D_NQ_NP_841076-MLA43642883689_102020-V.jpg' },
+  //     {id: 5, name: "harina", price:5, stock: 30, image: 'https://http2.mlstatic.com/D_NQ_NP_841076-MLA43642883689_102020-V.jpg' },
+  
+  //   ]
+  
+  //   const task = new Promise ((res, rej) => {
+  //     setTimeout(()=>
+  //     {
+  //       res(productos)
+  //     }, 2000)
+  //   })
     
-    useEffect(() => {
+  //   useEffect(() => {
       
-      // task
-      //   .then (res => setItems(res))
-      //   .catch(error => console.log(error))
-      //   .finally(() => setLoading(false))
-        fetch("https:/rickandmortyapi.com/api/character")
-        .then(res=> res.json())
-        .then(res => setItems(res.results))
-        .catch(error => console.log(error))
-        .finally(() => setLoading(false))
-    }, [])
+  //     // task
+  //     //   .then (res => setItems(res))
+  //     //   .catch(error => console.log(error))
+  //     //   .finally(() => setLoading(false))
+  //       fetch("https:/rickandmortyapi.com/api/character")
+  //       .then(res=> res.json())
+  //       .then(res => setItems(res.results))
+  //       .catch(error => console.log(error))
+  //       .finally(() => setLoading(false))
+  //   }, [])
     
     
-    const getTask = async () => {
-      try {
-        let res = await task
-        setItems(res)
-      } catch (error) {
-        console.log (error)
-      }
-    }
+  //   const getTask = async () => {
+  //     try {
+  //       let res = await task
+  //       setItems(res)
+  //     } catch (error) {
+  //       console.log (error)
+  //     }
+  //   }
     
-    useEffect(() => {
+  //   useEffect(() => {
     
-        getTask()
+  //       getTask()
     
     
-    }, [])
-    // const onAdd = (count) =>{
-    //       alert('Pedido de ' + name + ' por: ' + count + ' kg')
-    // }
+  //   }, [])
+  //   // const onAdd = (count) =>{
+  //   //       alert('Pedido de ' + name + ' por: ' + count + ' kg')
+  //   // }
     
 
-    console.log (items)
+  //   console.log (items)
 
         // const [productos, setProductos] = useState([])
         // const {categoriaId} = useParams()
@@ -97,14 +132,6 @@ const ItemListContainer = ({ greeting }) => {
 
         
         
-        return(
-
-          <div style = {{textAlign:'center', marginTop: 200 }}>
-              {loading ? <h1>Cargando...</h1> : <ItemList items={items}/>}
-              {/* <ItemList items={items}/>             */}
-              
-              
-          </div>
               // <ItemList productos={productos}/>
             // loading ? 
             //     <h1>Aguarde un momento..</h1>:
@@ -114,9 +141,6 @@ const ItemListContainer = ({ greeting }) => {
             //   {/* <ItemCount initial={1} stock={10} onAdd={onAdd} /> */}
             //   <ItemList items ={items} />
             // </div>
-          )
-
-    }       
 
 
     

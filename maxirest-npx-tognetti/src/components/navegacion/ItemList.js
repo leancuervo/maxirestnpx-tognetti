@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import Productos from '../helpers/Productos'
 import Item from './Item'
@@ -6,19 +6,19 @@ import Item from './Item'
 
 const ItemList = ({items}) => {
 
-      // let [productos, setProductos] = useState ([]);
+       let [productos, setProductos] = useState ([]);
 
-      // useEffect (() => {
-      //   let promesa = productos(true, 2000);
-      //   promesa.then (( response) => {
-      //     setProductos (response);
-      //     console.log(productos);
-      //   });
-      // },[])
+       useEffect (() => {
+         let promesa = Productos(true, 2000);
+         promesa.then (( response) => {
+           setProductos (response);
+           console.log(productos);
+         });
+       },[])
 
   return (
           <div style= { { display:'flex', flexDirection: 'row', justifyContent: 'center', flexWarp: 'warp'}}>
-              {items.map( item => 
+              {productos.map( item => 
               
                       <Item item={item} key={item.id}/>
 
