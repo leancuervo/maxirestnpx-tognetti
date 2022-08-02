@@ -6,6 +6,7 @@ import ItemCount from '../../components/ItemCount/ItemCount';
 import {useCartContext} from "../../context/CartContext"
 import {Productos} from "../../components/helpers/Productos"
 import { Input } from '../../components/paginas/Input';
+import Intercambio from '../../components/ItemCount/Intercambio';
 
 
  const ItemDetail = ({producto = {}}) => {
@@ -34,7 +35,7 @@ import { Input } from '../../components/paginas/Input';
                             </div>
                         </div>
                         <div className='producto__button'>
-                          <button className='button'> Detalle </button>
+                          <Intercambio/>
                         </div>
                         <div>
                           <a href="#" className='btn'></a>
@@ -43,7 +44,7 @@ import { Input } from '../../components/paginas/Input';
                     <div className='col'>
                       <ItemCount initial={1} stock={5} onAdd={onAdd} />
                     </div>
-                    <Input/>
+                    
                 </div>
 
     )

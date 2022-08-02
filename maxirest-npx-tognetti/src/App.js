@@ -22,7 +22,7 @@ function App() {
       <CartContextProvider>
           <div className="App border border-1 border-danger">
             <Navbar />
-            <Input/>
+            
             <Routes>
                 <Route index path='/' element={<ItemListContainer/>} />
                 <Route index path='/categoria/:categoriaId' element={<ItemListContainer/>} />

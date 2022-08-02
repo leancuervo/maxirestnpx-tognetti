@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import ItemDetail from '../ItemDetail/ItemDetail'
 import {getFetch} from '../../components/helpers/getFetch'
 import {Productos} from '../../components/helpers/Productos'
+import Intercambio from '../../components/ItemCount/Intercambio'
 
 
 const ItemDetailContainer = () => {
@@ -10,7 +11,7 @@ const ItemDetailContainer = () => {
   const {productoId} = useParams()
 
   useEffect( () =>{
-        Productos(productoId)
+        getFetch(productoId)
         .then (data => setProducto(data))
   }, [productoId])
 
@@ -22,7 +23,9 @@ const ItemDetailContainer = () => {
   return (
     
   <div style = {{textAlign:'center', marginTop: 200 }}>
-    <ItemDetail producto={producto}/>
+    
+    <ItemDetail />
+    
     {/* { detalleId.map(prod =><ItemDetail key={prod.id} prod={prod}/>)} */}
   </div>
 )
