@@ -1,7 +1,7 @@
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom';
-import ItemCount from './ItemCount';
+import ItemCount from '../ItemCount/ItemCount';
 import {Productos} from '../helpers/Productos'
 import React, { useEffect, useState } from 'react'
 
@@ -15,48 +15,8 @@ const Item = ({item}) => {
 
   const { name, price, stock, image } = item
   
-  // const [items,setItems] = useState ([])
-  
-  // // const promesa = () => useState ([])
-  // const productos = [
-  //   {id: 1, name: "trufa", price:150, stock: 5 },
-  //   {id: 2, name: "aceite de oliva", price:20, stock: 10 },
-  //   {id: 3, name: "papa", price:10, stock: 2 },
-
-  //   ]
-    
-  //   const task = new Promise ((res, rej) => {
-  //     setTimeout(()=>
-  //     {
-  //       res(productos)
-  //     }, 2000)
-  //   })
-    
-  //   useEffect(() => {
-      
-  //     task.then (res => setItems(res))
-  //     .catch(error => console.log(error))
-      
-  //   }, [])
-    
-    
-  //   const getTask = async () => {
-  //     try {
-  //       let res = await task
-  //       setItems(res)
-  //     } catch (error) {
-  //       console.log (error)
-  //     }
-  //   }
-    
-  //   useEffect(() => {
-    
-  //       getTask()
-    
-    
-  //   }, [])
-    const onAdd = (count) =>{
-          alert('Pedido de ' + name + ' por: ' + count + ' kg')
+  const onAdd = (count) =>{
+    alert('Pedido de ' + name + ' por: ' + count + ' kg')
     }
     
 
@@ -131,3 +91,44 @@ export default Item
 // </div>
 
 // </div>  */}
+
+// const [items,setItems] = useState ([])
+
+// // const promesa = () => useState ([])
+// const productos = [
+//   {id: 1, name: "trufa", price:150, stock: 5 },
+//   {id: 2, name: "aceite de oliva", price:20, stock: 10 },
+//   {id: 3, name: "papa", price:10, stock: 2 },
+
+//   ]
+  
+//   const task = new Promise ((res, rej) => {
+//     setTimeout(()=>
+//     {
+//       res(productos)
+//     }, 2000)
+//   })
+  
+//   useEffect(() => {
+    
+//     task.then (res => setItems(res))
+//     .catch(error => console.log(error))
+    
+//   }, [])
+  
+  
+//   const getTask = async () => {
+//     try {
+//       let res = await task
+//       setItems(res)
+//     } catch (error) {
+//       console.log (error)
+//     }
+//   }
+  
+//   useEffect(() => {
+  
+//       getTask()
+  
+  
+//   }, [])

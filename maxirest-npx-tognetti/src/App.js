@@ -1,35 +1,41 @@
 import './App.css';
 import {  BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
-import NavBar from './components/NavBar/NavBar'
-import ItemListContainer from './components/navegacion/ItemListContainer';
+import Navbar from './components/Navbar/Navbar';
+import ItemListContainer from './containers/ItemListContainer/ItemListContainer';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
+import ItemDetailContainer from './containers/ItemDetailContainer/ItemDetailContainer';
 import { Suspense } from 'react';
+import { CartContext } from './context/CartContext';
 
 
 function App() {
+
+  let saludo = 'Hola!'
+
   return (
     <BrowserRouter>
-        <div className="App">
-          <NavBar />
-          <Routes>
-              <Route index path='/' element={<ItemListContainer/>} />
-              <Route index path='/categoria/:categoriaId' element={<ItemListContainer/>} />
-              <Route path='/detalle/:productoId' element ={
-                <Suspense fallback={<div>Cargando...</div>}>
-                  <ItemListContainer/>
-                </Suspense>
-              } />
-              <Route path='/' element={<ItemDetailContainer/>}/>
-              <Route path='*' element={<Navigate to='/'/>}/>
-              
+      <CartContext.Provider>
+          <div className="App border border-1 border-danger">
+            <Navbar />
+            <Routes>
+                <Route index path='/' element={<ItemListContainer/>} />
+                <Route index path='/categoria/:categoriaId' element={<ItemListContainer/>} />
+                <Route path='/detalle/:productoId' element ={
+                  <Suspense fallback={<div>Cargando...</div>}>
+                    <ItemListContainer/>
+                  </Suspense>
+                } />
+                {/* <Route path='/cart' element={<CartContainer/>}/> */}
+                <Route path='*' element={<Navigate to='/'/>}/>
+                
 
-              {/* <ItemListContainer /> */}
-          </Routes>
-            
-        </div>
+                {/* <ItemListContainer /> */}
+            </Routes>
+              
+          </div>
+      </CartContext.Provider>
     </BrowserRouter>
     
   );

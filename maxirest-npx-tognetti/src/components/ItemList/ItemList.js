@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { getFetch } from '../helpers/getFetch'
 import Productos from '../helpers/Productos'
-import Item from './Item'
+import Item from '../navegacion/Item'
 
 
-const ItemList = ({items}) => {
+const ItemList = ({products}) => {
 
        let [productos, setProductos] = useState ([]);
 

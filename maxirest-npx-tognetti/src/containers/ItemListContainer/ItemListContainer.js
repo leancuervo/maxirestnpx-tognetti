@@ -1,70 +1,56 @@
 import React, { useEffect, useState } from 'react'
 import {Link, useParams} from 'react-router-dom'
-import Item from './Item'
-import ItemList from './ItemList'
+import Item from '../../components/navegacion/Item'
+import ItemList from '../../components/ItemList/ItemList'
 
-import Productos from '../helpers/Productos'
+import Productos from '../../components/helpers/Productos'
+import Loading from '../../components/Loading/Loading'
 
 
 
 
 const ItemListContainer = () => {
 
+  const [products, setProducts] = useState([])
+  const [loading, setLoading] = useState(true)
+  const {categoriaId} = useParams()
 
-  const [personajes, setPersonaje] = useState([])
-
-  const getFetch = async()=> {
-
-    try {
-      const resp = await fetch('https://rickandmortyapi.com/api/character/1,2,3,4,5,6,7,8,9')
-      const dataParse = await resp.json()
-      setPersonaje(dataParse)
-      } catch (error) {
-        console.log(error)
-      
+  useEffect ( () =>{
+    if (categoriaId) {
+      Productos()
+      .then(resp => setProducts(resp.fitler(product =>product.categoria === categoriaId)))
+      .catch (err => console.log(err))
+    }else {
+      Productos()
+      .then(resp => setProducts(resp))
+      .catch (err => console.log(err))
+      .finally(() => setLoading(false))
     }
-
     
-  }
+  }, [categoriaId])
 
 
 
-  const [items, setItems] = useState([])
-  const { categoriaId } = useParams()
-  // const [loading, setLoading] = useState(true, 2000)
+  
+  
+  return(
 
-      useEffect(() =>{
-        if (categoriaId) {
-          
-          fetch('https:/rickandmortyapi.com/api/character')
-          .then(resp => setItems(resp.filter(item => item.categoria === categoriaId))
-          .catch(error => console.log(error)))
-          // .finally(() => setLoading(false))
-        }else{
-            fetch('https:/rickandmortyapi.com/api/character')
-            .then(resp => setItems(resp))
-          }
-        
-      }, [categoriaId])
-    
-       
+      loading ? 
 
-console.table(categoriaId)
-console.table(personajes)
+        <Loading/>
+      :
 
-
-        return(
-
-          <div style = {{textAlign:'center', marginTop: 200 }}>
-              <ItemList items={items}/> 
-              {personajes.map(personaje => <li key={personaje.id}>{personaje.age}</li>)}
-              
-              
-              
-          </div>
+      
+              <ItemList products={products}/> 
+      
   )
   
-  }       
+  }
+  
+  
+
+
+  export default ItemListContainer
   // const [items,setItems] = useState ([])
   // const [loading, setLoading] = useState(true)
   // // const promesa = () => useState ([])
@@ -80,11 +66,11 @@ console.table(personajes)
   //   const task = new Promise ((res, rej) => {
   //     setTimeout(()=>
   //     {
-  //       res(productos)
-  //     }, 2000)
-  //   })
+    //       res(productos)
+    //     }, 2000)
+    //   })
     
-  //   useEffect(() => {
+    //   useEffect(() => {
       
   //     // task
   //     //   .then (res => setItems(res))
@@ -96,76 +82,76 @@ console.table(personajes)
   //       .catch(error => console.log(error))
   //       .finally(() => setLoading(false))
   //   }, [])
-    
-    
+  
+  
   //   const getTask = async () => {
   //     try {
-  //       let res = await task
-  //       setItems(res)
-  //     } catch (error) {
-  //       console.log (error)
+    //       let res = await task
+    //       setItems(res)
+    //     } catch (error) {
+      //       console.log (error)
   //     }
   //   }
-    
+  
   //   useEffect(() => {
     
-  //       getTask()
+    //       getTask()
     
     
-  //   }, [])
-  //   // const onAdd = (count) =>{
-  //   //       alert('Pedido de ' + name + ' por: ' + count + ' kg')
+    //   }, [])
+    //   // const onAdd = (count) =>{
+      //   //       alert('Pedido de ' + name + ' por: ' + count + ' kg')
   //   // }
     
 
   //   console.log (items)
-
+  
         // const [productos, setProductos] = useState([])
         // const {categoriaId} = useParams()
-
+        
         // useEffect(() =>{
         // if (categoriaId){
         //   productos()
         //   .then(resp => setProductos(resp.filter (productos => productos.categoria === categoriaId)))
         //   .catch(err => console.log(err))
-
+        
         // }else {
         //   productos()
         //   .then(resp=> setProductos(resp))
         //   .catch(err => console.log(err))
         // }}, [categoriaId])
-
+        
         // console.table(categoriaId)
 
 //         const [ result, setResult] = useState({ result : [] });
 
 // useEffect(() =>{
-//   fetch('https://pokeapi.co/api/v2/{endpoint}/')
+  //   fetch('https://pokeapi.co/api/v2/{endpoint}/')
 //   .then(res => res.json())
 //   .then(json => setResult(json));
 // }, []);
 
-      // const onAdd =(count) =>{
+// const onAdd =(count) =>{
       //   alert(`Seleccionaste: `+ count)
       // }
 
-
+      
         
-        
-              // <ItemList productos={productos}/>
-            // loading ? 
-            //     <h1>Aguarde un momento..</h1>:
-            // <ItemList productos ={productos}/>
-            // <div style= {{ textAlign:'center', marginTop: 50}}>
-            //   {greeting} 
-            //   {/* <ItemCount initial={1} stock={10} onAdd={onAdd} /> */}
-            //   <ItemList items ={items} />
-            // </div>
+      
+      // <ItemList productos={productos}/>
+      // loading ? 
+      //     <h1>Aguarde un momento..</h1>:
+      // <ItemList productos ={productos}/>
+      // <div style= {{ textAlign:'center', marginTop: 50}}>
+      //   {greeting} 
+      //   {/* <ItemCount initial={1} stock={10} onAdd={onAdd} /> */}
+      //   <ItemList items ={items} />
+      // </div>
 
-
-    
-    // const onAdd = (count) =>{
-    //   alert('Pedido de zzzz por: ' + count + ' kg')
+      
+      
+      // const onAdd = (count) =>{
+        //   alert('Pedido de zzzz por: ' + count + ' kg')
     // }
   //   const [productos, setProductos] = useState ([])
   //   const [loading, setLoading] = useState (true)
@@ -186,30 +172,69 @@ console.table(personajes)
   
   // }, [categoriaId])
   
-
+  
   //   const[items, setItems ] = useState ([])
-    
-
-
+  
+  
+  
   //   const task = new Promise ((res, rej) => {
   //       setTimeout(()=>
   //       {
-  //           res(productos)
-  //       }, 2000)
-  //   })
-
-  //   useEffect(() => {
-
+    //           res(productos)
+    //       }, 2000)
+    //   })
+    
+    //   useEffect(() => {
+      
   //       task
   //           .then (res => setItems(res))
   //           .catch(error => console.log(error))
-
+  
   //   }, [])
-    
-
-
-
+  
+  
+  
+  
   //   console.log (items)
-export default ItemListContainer
+  
 
-
+  //   const [personajes, setPersonaje] = useState([])
+  
+  //   const getFetch = async()=> {
+  
+  //     try {
+  //       const resp = await fetch("./assets/Json/DATA")
+  //       const dataParse = await resp.json()
+  //       setPersonaje(dataParse)
+  //       } catch (error) {
+  //         console.log(error)
+        
+  //     }
+  
+      
+  //   }
+  
+  
+  
+  //   const [items, setItems] = useState([])
+  //   const { categoriaId } = useParams()
+  //   // const [loading, setLoading] = useState(true, 2000)
+  
+  //       useEffect(() =>{
+  //         if (categoriaId) {
+            
+  //           fetch('https:/rickandmortyapi.com/api/character')
+  //           .then(resp => setItems(resp.filter(item => item.categoria === categoriaId))
+  //           .catch(error => console.log(error)))
+  //           // .finally(() => setLoading(false))
+  //         }else{
+  //             fetch('https:/rickandmortyapi.com/api/character')
+  //             .then(resp => setItems(resp))
+  //           }
+          
+  //       }, [categoriaId])
+      
+         
+  
+  // console.table(categoriaId)
+  // console.table(personajes)
