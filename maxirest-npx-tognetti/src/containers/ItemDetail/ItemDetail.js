@@ -5,6 +5,7 @@ import ItemCount from '../../components/ItemCount/ItemCount';
 
 import {useCartContext} from "../../context/CartContext"
 import {Productos} from "../../components/helpers/Productos"
+import { Input } from '../../components/paginas/Input';
 
 
  const ItemDetail = ({producto = {}}) => {
@@ -42,7 +43,9 @@ import {Productos} from "../../components/helpers/Productos"
                     <div className='col'>
                       <ItemCount initial={1} stock={5} onAdd={onAdd} />
                     </div>
+                    <Input/>
                 </div>
+
     )
 
 

@@ -10,7 +10,7 @@ const ItemDetailContainer = () => {
   const {productoId} = useParams()
 
   useEffect( () =>{
-        getFetch(productoId)
+        Productos(productoId)
         .then (data => setProducto(data))
   }, [productoId])
 

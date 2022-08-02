@@ -9,8 +9,9 @@ import ItemDetailContainer from './containers/ItemDetailContainer/ItemDetailCont
 import { Suspense } from 'react';
 import CartContextProvider, { CartContext } from './context/CartContext';
 import CartContainer from './containers/CartContainer/CartContainer';
+import { Input } from './components/paginas/Input';
 
-// const ItemDetailContainer = lazy(() => import('./containers/ItemDetailContainer/ItemDetailContainer'))
+//const ItemDetailContainer = lazy(() => import('./containers/ItemDetailContainer/ItemDetailContainer'))
 
 function App() {
 
@@ -21,12 +22,13 @@ function App() {
       <CartContextProvider>
           <div className="App border border-1 border-danger">
             <Navbar />
+            <Input/>
             <Routes>
                 <Route index path='/' element={<ItemListContainer/>} />
                 <Route index path='/categoria/:categoriaId' element={<ItemListContainer/>} />
                 <Route path='/detalle/:productoId' element ={
                   <Suspense fallback={<div>Cargando...</div>}>
-                    <ItemListContainer/>
+                    <ItemDetailContainer/>
                   </Suspense>
                 } />
                 <Route path='/cart' element={<CartContainer/>}/>

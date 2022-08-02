@@ -31,7 +31,7 @@ const Item = ({item}) => {
             <br />
             Disponible: {stock}
         </Card.Text>
-        <Link to={`/detalles/${item.id}`}>
+        <Link to={`/detalle/${item.id}`}>
         <Button variant="primary">Mas Info</Button>
         </Link>
         </Card.Body>

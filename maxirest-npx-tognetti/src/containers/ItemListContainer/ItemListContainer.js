@@ -5,6 +5,7 @@ import ItemList from '../../components/ItemList/ItemList'
 
 import Productos from '../../components/helpers/Productos'
 import Loading from '../../components/Loading/Loading'
+import { Input } from '../../components/paginas/Input'
 
 
 
@@ -41,7 +42,8 @@ const ItemListContainer = () => {
       :
 
       
-              <ItemList products={products}/> 
+              <ItemList products={products}/>
+              
       
   )
   
