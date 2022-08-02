@@ -1,15 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 import ItemCount from '../../components/ItemCount/ItemCount';
 
 
-import {useCartContext} from "../../containers/CartContainer/CartContainer"
+import {useCartContext} from "../../context/CartContext"
 import {Productos} from "../../components/helpers/Productos"
 
 
  const ItemDetail = ({producto = {}}) => {
 
-    const { name, price, stock, image } = producto
+
     const { agregarCarrito, cartList} = useCartContext()
 
     const onAdd = (count) => {

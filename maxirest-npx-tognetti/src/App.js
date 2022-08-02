@@ -7,8 +7,10 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ItemDetailContainer from './containers/ItemDetailContainer/ItemDetailContainer';
 import { Suspense } from 'react';
-import { CartContext } from './context/CartContext';
+import CartContextProvider, { CartContext } from './context/CartContext';
+import CartContainer from './containers/CartContainer/CartContainer';
 
+// const ItemDetailContainer = lazy(() => import('./containers/ItemDetailContainer/ItemDetailContainer'))
 
 function App() {
 
@@ -16,7 +18,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <CartContext.Provider>
+      <CartContextProvider>
           <div className="App border border-1 border-danger">
             <Navbar />
             <Routes>
@@ -27,7 +29,7 @@ function App() {
                     <ItemListContainer/>
                   </Suspense>
                 } />
-                {/* <Route path='/cart' element={<CartContainer/>}/> */}
+                <Route path='/cart' element={<CartContainer/>}/>
                 <Route path='*' element={<Navigate to='/'/>}/>
                 
 
@@ -35,7 +37,7 @@ function App() {
             </Routes>
               
           </div>
-      </CartContext.Provider>
+      </CartContextProvider>
     </BrowserRouter>
     
   );
