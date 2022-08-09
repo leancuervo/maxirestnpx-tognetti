@@ -7,10 +7,29 @@ import Productos from '../../components/helpers/Productos'
 import Loading from '../../components/Loading/Loading'
 import { Input } from '../../components/paginas/Input'
 
+// function ItemListContainer () {
+//   const [bool, setBool] = useState(true)
+//   const [items, setItems] = useState([])
+//   const {category} = useParams()
 
+//   useEffect (() => 
+
+//     if(category === undefined) {
+
+//       tarea
+//       .then ((resp) => setItems)
+
+
+//     }
+  
+//   )
+// }
 
 
 const ItemListContainer = () => {
+
+
+
 
   const [products, setProducts] = useState([])
   const [loading, setLoading] = useState(true)

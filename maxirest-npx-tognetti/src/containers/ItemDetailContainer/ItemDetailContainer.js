@@ -4,6 +4,7 @@ import ItemDetail from '../ItemDetail/ItemDetail'
 import {getFetch} from '../../components/helpers/getFetch'
 import {Productos} from '../../components/helpers/Productos'
 import Intercambio from '../../components/ItemCount/Intercambio'
+import { TextComponent } from '../../components/Loading/TextComponent'
 
 
 const ItemDetailContainer = () => {
@@ -23,8 +24,9 @@ const ItemDetailContainer = () => {
   return (
     
   <div style = {{textAlign:'center', marginTop: 200 }}>
-    
-    <ItemDetail />
+    {/* <TextComponent> */}
+      <ItemDetail producto={producto} />
+    {/* </TextComponent> */}
     
     {/* { detalleId.map(prod =><ItemDetail key={prod.id} prod={prod}/>)} */}
   </div>
