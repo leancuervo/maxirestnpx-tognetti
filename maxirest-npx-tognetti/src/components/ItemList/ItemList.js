@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { getFetch } from '../helpers/getFetch'
+// import { getFetch } from '../helpers/getFetch'
 import Productos from '../helpers/Productos'
 import Item from '../navegacion/Item'
 

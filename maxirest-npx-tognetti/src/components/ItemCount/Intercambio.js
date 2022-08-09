@@ -40,7 +40,7 @@ const Intercambio = () => {
     }
 
   return (
-    <div>
+    <div style= { { display:'flex', flexDirection: 'row', justifyContent: 'center'}}>
     <h2>Descripción</h2>
 
     {
